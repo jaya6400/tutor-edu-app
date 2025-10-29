@@ -126,8 +126,8 @@ function VideoCardContent() {
         muted
         playsInline
         className="rounded-2xl w-full h-48 object-cover"
-        src="../media/video.mp4"
-      ></video>
+        src="/video.mp4"
+      />
     </div>
   );
 }
