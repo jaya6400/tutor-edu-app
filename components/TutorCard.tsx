@@ -2,57 +2,37 @@
 
 import { motion } from "framer-motion";
 
-type TutorCardProps = {
-  title: string;
-  subtitle: string;
-  emoji?: string;
-  leftText?: string;
-  rightText?: string;
-  buttonText?: string;
-  onNext?: () => void;
-};
-
 export default function TutorCard({
   title,
   subtitle,
-  emoji,
-  leftText,
-  rightText,
-  buttonText,
-  onNext,
-}: TutorCardProps) {
+  children,
+  onClick,
+}: {
+  title: string;
+  subtitle: string;
+  children: React.ReactNode;
+  onClick: () => void;
+}) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 80 }}
+      layout
+      initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -80 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="bg-white rounded-3xl shadow-xl p-10 md:p-14 flex flex-col md:flex-row justify-between items-center w-full max-w-5xl mx-auto cursor-pointer"
-      onClick={onNext}
+      exit={{ opacity: 0, y: -100 }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
+      className="relative bg-white border border-gray-200 rounded-3xl shadow-2xl w-full max-w-5xl p-10 flex flex-col md:flex-row justify-between items-center cursor-pointer"
+      onClick={onClick}
     >
-      {/* Left side text */}
+      {/* Left Text Section */}
       <div className="flex-1 text-left md:pr-12">
         <h2 className="text-3xl font-semibold text-gray-900 mb-4">{title}</h2>
-        <p className="text-gray-600">{subtitle}</p>
+        <p className="text-gray-500 text-base">{subtitle}</p>
       </div>
 
-      {/* Right side */}
-      <div className="flex-1">
-        <div className="relative bg-gray-50 rounded-2xl p-6 shadow-inner">
-          <div className="absolute top-3 left-3 text-2xl">{emoji}</div>
-          <div className="grid grid-cols-2 gap-4 mt-10">
-            <div className="bg-pink-500 text-white rounded-xl p-4 text-sm font-medium shadow-md">
-              {leftText}
-            </div>
-            <div className="bg-blue-600 text-white rounded-xl p-4 text-sm font-medium shadow-md">
-              {rightText}
-            </div>
-            <div className="col-span-2">
-              <button className="bg-blue-600 text-white w-full py-2 rounded-xl font-semibold mt-4">
-                {buttonText}
-              </button>
-            </div>
-          </div>
+      {/* Right Card (Mobile Mockup) */}
+      <div className="flex-1 mt-8 md:mt-0 flex justify-center">
+        <div className="relative bg-gray-50 rounded-2xl shadow-inner p-6 w-72 md:w-80">
+          {children}
         </div>
       </div>
     </motion.div>
