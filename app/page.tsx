@@ -78,17 +78,18 @@ export default function Home() {
 }
 
 /* ✅ Card-specific mobile contents */
-
 function GoalsCardContent() {
   return (
     <>
-      <div className="bg-pink-500 text-white rounded-xl p-4 mb-3 shadow-md text-sm">
-        You’re interested in traveling and exploring new cultures.
+      <div className="flex flex-row gap-3 mb-3">
+        <div className="flex-1 bg-pink-500 text-white rounded-xl p-4 shadow-md text-sm">
+          You’re interested in traveling and exploring new cultures.
+        </div>
+        <div className="flex-1 bg-blue-600 text-white rounded-xl p-4 shadow-md text-sm">
+          We’ve created unique lessons and conversations based on those goals.
+        </div>
       </div>
-      <div className="bg-blue-600 text-white rounded-xl p-4 shadow-md text-sm">
-        We’ve created unique lessons and conversations based on those goals.
-      </div>
-      <button className="bg-blue-600 text-white font-semibold w-full rounded-xl mt-4 py-2">
+      <button className="bg-blue-600 text-white font-semibold w-full rounded-xl mt-2 py-2">
         Get Started
       </button>
     </>
