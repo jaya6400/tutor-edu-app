@@ -128,4 +128,5 @@ Support for dynamic data loading from an API
 ### 👩‍💻 Author
 
 Jaya Dubey
+
 Built with ❤️ using Next.js, Tailwind CSS, Framer Motion, and Heroicons.
