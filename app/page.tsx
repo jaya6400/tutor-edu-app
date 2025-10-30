@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import TutorCard from "@/components/TutorCard";
 
 export default function Home() {
@@ -11,73 +11,94 @@ export default function Home() {
     setIndex((prev) => (prev + 1) % 3);
   };
 
+  const cards = [
+    {
+      key: "card1",
+      title: "Stay motivated and reach your goals",
+      subtitle:
+        "Speak Tutor keeps you motivated and accountable to achieve your goals. Learning a language is better with someone by your side.",
+      content: <GoalsCardContent />,
+    },
+    {
+      key: "card2",
+      title: "Talk about anything, anytime, anywhere",
+      subtitle:
+        "Speak Tutor is your on-the-go conversational partner. Practice speaking on any topic, anytime, no matter how niche.",
+      content: <ChatCardContent />,
+    },
+    {
+      key: "card3",
+      title: "Build a relationship with your tutor",
+      subtitle:
+        "Speak Tutor designs a personalized curriculum as unique as you are by getting to know you deeply.",
+      content: <VideoCardContent />,
+    },
+  ];
+
   return (
-    <main className="bg-gray-100 min-h-screen flex flex-col items-center justify-center py-24">
+    <main className="bg-gray-100 min-h-screen flex flex-col items-center justify-center py-24 overflow-hidden">
       <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-10">
-        Speak Tutor — pixel UI clone
+        Speak Tutor — Pixel UI Clone
       </h1>
 
-      <div className="relative w-full flex flex-col items-center overflow-hidden">
-        {/* Stacked effect for lower cards */}
-        <div className="absolute top-12 scale-95 opacity-60 z-0">
-          <TutorCard
-            title="Talk about anything, anytime, anywhere"
-            subtitle="Speak Tutor is your on-the-go conversational partner. Practice speaking on any topic, anytime, no matter how niche."
-            onClick={() => {}}
-          >
-            <ChatCardContent />
-          </TutorCard>
-        </div>
+      <div className="relative w-full flex flex-col items-center justify-center h-[650px]">
+        {/* Next two cards in stack (faded, scaled down) */}
+        {cards.map((card, i) => {
+          if (i <= index) return null; // only show upcoming cards
+          const offset = (i - index) * 40;
+          const scale = 1 - (i - index) * 0.05;
+          const opacity = 1 - (i - index) * 0.2;
 
-        <div className="absolute top-24 scale-90 opacity-40 z-0">
-          <TutorCard
-            title="Build a relationship with your tutor"
-            subtitle="Speak Tutor designs a personalized curriculum as unique as you are by getting to know you deeply."
-            onClick={() => {}}
-          >
-            <VideoCardContent />
-          </TutorCard>
-        </div>
+          return (
+            <motion.div
+              key={card.key + "-bg"}
+              className="absolute z-0 w-full flex justify-center"
+              style={{ top: `${offset}px` }}
+              initial={{ opacity: 0, scale }}
+              animate={{ opacity, scale }}
+              transition={{ duration: 0.4 }}
+            >
+              <div className="w-[90%] md:w-[70%]">
+                <TutorCard
+                  title={card.title}
+                  subtitle={card.subtitle}
+                  onClick={() => {}}
+                >
+                  {card.content}
+                </TutorCard>
+              </div>
+            </motion.div>
+          );
+        })}
 
         {/* Active card */}
         <AnimatePresence mode="wait">
-          {index === 0 && (
-            <TutorCard
-              key="card1"
-              title="Stay motivated and reach your goals"
-              subtitle="Speak Tutor keeps you motivated and accountable to achieve your goals. Learning a language is better with someone by your side."
-              onClick={handleNext}
-            >
-              <GoalsCardContent />
-            </TutorCard>
-          )}
-          {index === 1 && (
-            <TutorCard
-              key="card2"
-              title="Talk about anything, anytime, anywhere"
-              subtitle="Speak Tutor is your on-the-go conversational partner. Practice speaking on any topic, anytime, no matter how niche."
-              onClick={handleNext}
-            >
-              <ChatCardContent />
-            </TutorCard>
-          )}
-          {index === 2 && (
-            <TutorCard
-              key="card3"
-              title="Build a relationship with your tutor"
-              subtitle="Speak Tutor designs a personalized curriculum as unique as you are by getting to know you deeply."
-              onClick={handleNext}
-            >
-              <VideoCardContent />
-            </TutorCard>
-          )}
+          <motion.div
+            key={cards[index].key}
+            className="absolute z-10 w-full flex justify-center"
+            initial={{ y: 0, opacity: 1 }}
+            animate={{ y: -80, opacity: 1 }}
+            exit={{ y: -400, opacity: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
+            <div className="w-[90%] md:w-[70%]">
+              <TutorCard
+                title={cards[index].title}
+                subtitle={cards[index].subtitle}
+                onClick={handleNext}
+              >
+                {cards[index].content}
+              </TutorCard>
+            </div>
+          </motion.div>
         </AnimatePresence>
       </div>
     </main>
   );
 }
 
-/* ✅ Card-specific mobile contents */
+/* ✅ CARD CONTENTS BELOW */
+
 function GoalsCardContent() {
   return (
     <>
@@ -120,7 +141,7 @@ function ChatCardContent() {
 
 function VideoCardContent() {
   return (
-    <div className="relative rounded-2xl overflow-hidden shadow-md">
+    <div className="relative rounded-2xl overflow-hidden shadow-md border border-gray-200">
       <video
         autoPlay
         loop
