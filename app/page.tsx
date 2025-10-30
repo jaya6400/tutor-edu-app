@@ -36,16 +36,12 @@ export default function Home() {
   ];
 
   return (
-    <main className="bg-gray-100 min-h-screen flex flex-col items-center justify-center py-24 overflow-hidden">
-      <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-10">
-        Speak Tutor — Pixel UI Clone
-      </h1>
-
-      <div className="relative w-full flex flex-col items-center justify-center h-[650px]">
-        {/* Next two cards in stack (faded, scaled down) */}
+    <main className="bg-[#f8f9fb] min-h-screen flex flex-col items-center justify-center py-20 overflow-hidden">
+      <div className="relative w-full flex flex-col items-center justify-center h-[700px]">
+        {/* Stacked background cards */}
         {cards.map((card, i) => {
-          if (i <= index) return null; // only show upcoming cards
-          const offset = (i - index) * 40;
+          if (i <= index) return null;
+          const offset = (i - index) * 60;
           const scale = 1 - (i - index) * 0.05;
           const opacity = 1 - (i - index) * 0.2;
 
@@ -58,20 +54,18 @@ export default function Home() {
               animate={{ opacity, scale }}
               transition={{ duration: 0.4 }}
             >
-              <div className="w-[90%] md:w-[70%]">
-                <TutorCard
-                  title={card.title}
-                  subtitle={card.subtitle}
-                  onClick={() => {}}
-                >
-                  {card.content}
-                </TutorCard>
-              </div>
+              <TutorCard
+                title={card.title}
+                subtitle={card.subtitle}
+                onClick={() => {}}
+              >
+                {card.content}
+              </TutorCard>
             </motion.div>
           );
         })}
 
-        {/* Active card */}
+        {/* Active animated card */}
         <AnimatePresence mode="wait">
           <motion.div
             key={cards[index].key}
@@ -79,17 +73,15 @@ export default function Home() {
             initial={{ y: 0, opacity: 1 }}
             animate={{ y: -80, opacity: 1 }}
             exit={{ y: -400, opacity: 0 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
+            transition={{ duration: 0.7, ease: "easeInOut" }}
           >
-            <div className="w-[90%] md:w-[70%]">
-              <TutorCard
-                title={cards[index].title}
-                subtitle={cards[index].subtitle}
-                onClick={handleNext}
-              >
-                {cards[index].content}
-              </TutorCard>
-            </div>
+            <TutorCard
+              title={cards[index].title}
+              subtitle={cards[index].subtitle}
+              onClick={handleNext}
+            >
+              {cards[index].content}
+            </TutorCard>
           </motion.div>
         </AnimatePresence>
       </div>
@@ -97,59 +89,64 @@ export default function Home() {
   );
 }
 
-/* ✅ CARD CONTENTS BELOW */
+/* ----- CONTENTS BELOW ----- */
 
 function GoalsCardContent() {
   return (
-    <>
-      <div className="flex flex-row gap-3 mb-3">
-        <div className="flex-1 bg-pink-500 text-white rounded-xl p-4 shadow-md text-sm">
+    <div className="bg-white rounded-3xl p-5 shadow-inner border border-gray-200">
+      <div className="flex justify-left mb-3">
+        <span className="text-3xl">🤖</span>
+      </div>
+      <div className="flex gap-3 mb-4">
+        <div className="flex-1 bg-[#f15b75] text-white rounded-2xl p-4 text-sm font-medium shadow-sm">
           You’re interested in traveling and exploring new cultures.
         </div>
-        <div className="flex-1 bg-blue-600 text-white rounded-xl p-4 shadow-md text-sm">
+        <div className="flex-1 bg-[#0a66ff] text-white rounded-2xl p-4 text-sm font-medium shadow-sm">
           We’ve created unique lessons and conversations based on those goals.
         </div>
       </div>
-      <button className="bg-blue-600 text-white font-semibold w-full rounded-xl mt-2 py-2">
+      <button className="bg-[#0a66ff] text-white font-semibold w-full rounded-xl py-2">
         Get Started
       </button>
-    </>
+    </div>
   );
 }
 
 function ChatCardContent() {
   return (
-    <>
-      <p className="text-gray-700 text-sm font-semibold mb-3">Create your own</p>
+    <div className="bg-white rounded-3xl p-5 shadow-inner border border-gray-200">
+      <p className="text-gray-600 text-sm font-semibold mb-4">Create your own</p>
       <div className="space-y-3">
-        <div className="bg-white border rounded-lg px-4 py-2 text-gray-700 text-sm shadow-sm">
-          🧳 Tourist
+        <div className="bg-gray-100 rounded-lg px-4 py-3 text-gray-800 text-sm flex items-center gap-2">
+          👤 Tourist
         </div>
-        <div className="bg-white border rounded-lg px-4 py-2 text-gray-700 text-sm shadow-sm">
+        <div className="bg-gray-100 rounded-lg px-4 py-3 text-gray-800 text-sm flex items-center gap-2">
           🤝 New friend
         </div>
-        <div className="bg-white border rounded-lg px-4 py-2 text-gray-700 text-sm shadow-sm">
+        <div className="bg-gray-100 rounded-lg px-4 py-3 text-gray-800 text-sm flex items-center gap-2">
           🍽 Talking about the best places to grab dinner in San Francisco.
         </div>
       </div>
-      <button className="bg-blue-600 text-white font-semibold w-full rounded-xl mt-5 py-2">
+      <button className="bg-[#0a66ff] text-white font-semibold w-full rounded-xl mt-5 py-2">
         Start Chatting
       </button>
-    </>
+    </div>
   );
 }
 
 function VideoCardContent() {
   return (
-    <div className="relative rounded-2xl overflow-hidden shadow-md border border-gray-200">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="rounded-2xl w-full h-48 object-cover"
-        src="/video.mp4"
-      />
+    <div className="bg-white rounded-3xl p-5 shadow-inner border border-gray-200">
+      <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-56 object-cover"
+          src="/video.mp4"
+        />
+      </div>
     </div>
   );
 }
