@@ -3,9 +3,9 @@
 A visually engaging swipe-up card stack interface built using **Next.js**, **Tailwind CSS**, **Framer Motion**, and **Heroicons**.  
 Each card contains interactive content and slides upward with smooth animation — creating a modern, responsive UI inspired by mobile onboarding flows.
 
-**Deployment** on **Vercel**: https://tutor-edu-jd-app.vercel.app/ 
+**Deployment** on **Vercel**: [Link](https://tutor-edu-jd-app.vercel.app/) 
 
-**Demo Video**: https://drive.google.com/file/d/1w0wSxok_wL4pm-7VJwgNpyRvPcRWrzWz/view?usp=drivesdk
+**Demo Video**: [Link](https://drive.google.com/file/d/1w0wSxok_wL4pm-7VJwgNpyRvPcRWrzWz/view?usp=drivesdk)
 
 ---
 
