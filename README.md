@@ -3,7 +3,7 @@
 A visually engaging swipe-up card stack interface built using **Next.js**, **Tailwind CSS**, **Framer Motion**, and **Heroicons**.  
 Each card contains interactive content and slides upward with smooth animation — creating a modern, responsive UI inspired by mobile onboarding flows.
 
-Deployment on **Vercel**:  
+Deployment on **Vercel**: https://tutor-edu-jd-app.vercel.app/ 
 
 ---
 
@@ -21,8 +21,8 @@ Deployment on **Vercel**:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/swipeup-card-stack.git
-   cd swipeup-card-stack
+   git clone https://github.com/jaya6400/tutor-edu-app.git
+   cd tutor-edu-app
    ```
 ### Install dependencies
 ```
