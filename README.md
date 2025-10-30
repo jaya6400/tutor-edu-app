@@ -42,6 +42,17 @@ npm run dev
 yarn dev
 ```
 
+### Using Docker:
+**Build image**
+```
+docker build -t my-tutor-edu-app .
+```
+
+**Run container**
+```
+docker run -p 3000:3000 my-nextjs-app
+```
+
 ### Open in browser
 
 http://localhost:3000
