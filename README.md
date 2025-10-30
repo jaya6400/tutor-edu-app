@@ -28,7 +28,7 @@ Deployment on **Vercel**:
 ```
 npm install
 ```
-# or
+**or**
 ```
 yarn install
 ```
@@ -37,7 +37,7 @@ yarn install
 ```
 npm run dev
 ```
-# or
+**or**
 ```
 yarn dev
 ```
@@ -47,6 +47,7 @@ yarn dev
 http://localhost:3000
 
 ### 🧱 Component Structure
+```
 src/
 ├── app/
 │   ├── page.tsx             # Main page rendering stacked TutorCards
@@ -58,10 +59,11 @@ src/
 │   ├── VideoCardContent.tsx # Content for third card with embedded video
 └── public/
     └── video.mp4            # Demo video used in the third card
+```
 
-🧠 Component Explanation
+### 🧠 Component Explanation
 
-TutorCard.tsx
+**TutorCard.tsx**
 
 Displays the card layout (title, subtitle, and child content).
 
@@ -69,7 +71,7 @@ Styled using Tailwind classes for rounded corners, soft shadows, and responsive 
 
 Handles click interaction for transitioning between cards.
 
-page.tsx
+**page.tsx**
 
 Manages card state and animation logic using Framer Motion and useState.
 
@@ -82,7 +84,7 @@ Content Components
 Each card’s content (e.g., goals, chat options, video demo) is modular and passed as props into TutorCard.
 
 ### 📱 Responsiveness & 🎞️ Animations
-Responsiveness
+**Responsiveness**
 
 Implemented with Tailwind’s responsive utilities (sm:, md:, lg:).
 
@@ -90,7 +92,7 @@ The layout centers cards vertically and adjusts padding and text size based on v
 
 On mobile screens, each card occupies the full width with stacked visibility underneath.
 
-Animations
+**Animations**
 
 Framer Motion drives all transitions and stacking effects:
 

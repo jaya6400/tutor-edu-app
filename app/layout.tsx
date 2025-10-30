@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "../styles/styles.css"
+import "../styles/styles.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Tutor Edu App",
   description: "Created by JDev",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({
