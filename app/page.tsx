@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import TutorCard from "@/components/TutorCard";
+import { HeartIcon, ListBulletIcon } from '@heroicons/react/24/outline'; 
 
 export default function Home() {
   const [index, setIndex] = useState(0);
@@ -95,13 +96,19 @@ function GoalsCardContent() {
   return (
     <div className="bg-white rounded-3xl p-5 shadow-inner border border-gray-200">
       <div className="flex justify-left mb-3">
-        <span className="text-3xl">🤖</span>
+        <span className="text-1.5xl">🤖</span>
       </div>
       <div className="flex gap-3 mb-4">
         <div className="flex-1 bg-[#f15b75] text-white rounded-2xl p-4 text-sm font-medium shadow-sm">
+          <div className="flex justify-left mb-3">
+            <HeartIcon className="w-6 h-6" />
+          </div>
           You’re interested in traveling and exploring new cultures.
         </div>
         <div className="flex-1 bg-[#0a66ff] text-white rounded-2xl p-4 text-sm font-medium shadow-sm">
+          <div className="flex justify-left mb-3">
+            <ListBulletIcon className="h-6 w-6 text-white-500" />
+          </div>
           We’ve created unique lessons and conversations based on those goals.
         </div>
       </div>
